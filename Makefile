@@ -2,6 +2,8 @@
 	CFLAGS = -g -Wall -c
 	LDFLAGS = -g -Wall
 
+.PHONY : all test clean
+
 all: philspel
 
 philspel : philspel.o hashtable.o
@@ -15,6 +17,7 @@ hashtable.o : hashtable.c hashtable.h
 
 clean :
 	rm *.o
+	rm philspel
 
 test : clean philspel
 	touch testOutput
