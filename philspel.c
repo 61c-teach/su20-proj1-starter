@@ -39,13 +39,22 @@ HashTable *dictionary;
  * process, in the same way which this does.
  */
 int main(int argc, char **argv) {
-  fprintf(stderr, "You need to create the main routine!\n");
+  if (argc != 2) {
+    fprintf(stderr, "Specify a dictionary\n");
+    return 0;
+  }
+  /*
+   * Allocate a hash table to store the dictionary
+   */
+  fprintf(stderr, "Creating hashtable\n");
+  dictionary = createHashTable(2255, &stringHash, &stringEquals);
 
-  // HINT:
-  // 1. check args
-  // 2. create hash table
-  // 3. load dictionary
-  // 4. process stdin
+  fprintf(stderr, "Loading dictionary %s\n", argv[1]);
+  readDictionary(argv[1]);
+  fprintf(stderr, "Dictionary loaded\n");
+
+  fprintf(stderr, "Processing stdin\n");
+  processInput();
 
   /* main in C should always return 0 as a way of telling
      whatever program invoked this that everything went OK
