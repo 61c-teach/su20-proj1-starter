@@ -1,5 +1,5 @@
 	CC = gcc
-	CFLAGS = -g -Wall -c
+	CFLAGS = -g -Wall -std=c99 -c
 	LDFLAGS = -g -Wall
 
 .PHONY : all test clean
