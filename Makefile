@@ -16,8 +16,7 @@ hashtable.o : hashtable.c hashtable.h
 	$(CC) $(CFLAGS) hashtable.c
 
 clean :
-	rm *.o
-	rm philspel
+	rm -f *.o philspel
 
 test : clean philspel
 	touch testOutput
