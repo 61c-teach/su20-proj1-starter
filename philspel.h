@@ -3,7 +3,7 @@
 
 extern struct HashTable *dictionary;
 
-extern unsigned int stringHash(void *string);
+extern unsigned int stringHash(void *s);
 
 extern int stringEquals(void *s1, void *s2);
 

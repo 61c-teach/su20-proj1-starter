@@ -1,4 +1,3 @@
-
 /*
  * This is so the C preprocessor does not try to include multiple copies
  * of the header file if someone uses multiple #include directives.
@@ -15,12 +14,11 @@
 #endif
 
 /*
- * This header file defines an interface to a generic hashtable.
- * It stores void* data, and uses two function, int (*) (void *) to
- * compute the hash and an int (*) (void *, void *) for equal true/false
- * which makes this a generic hashtable.
+ * This header file defines an interface to a generic chained hash table. 
+ * It stores void * data and uses two functions, int (*) (void *)
+ * and int (*) (void *, void *), to compute the hash and check
+ * for equality.
  */
-
 struct HashBucket {
   void *key;
   void *data;
@@ -28,33 +26,31 @@ struct HashBucket {
 };
 
 typedef struct HashTable {
-  unsigned int (*hashFunction)(void *);
-  int (*equalFunction)(void *, void *);
-  struct HashBucket **data;
-  int size;
+  // -- TODO --
+  // HINT: Take a look at createHashTable.
 } HashTable;
 
 /*
- * this creates a new hashtable of the specified size and with
- * a hashfunction and a comparison function.
+ * This creates a new hash table of the specified size and with
+ * the given hash function and comparison function.
  */
 extern HashTable *createHashTable(int size,
                                   unsigned int (*hashFunction)(void *),
                                   int (*equalFunction)(void *, void *));
 
 /*
- * This inserts a bit of data and key into a hashtable.  To use this
- * to store strings, simply cast a char * to a void *.  EG, to store
- * the string refered to by the declaration char *string, you would
- * call insertData(someHashTable, (void *) string, (void *) string);
- * if you wanted to use the string both as data and as the key
- * (such as in the philspel project)
+ * This inserts a key/data pair into a hash table.  To use this
+ * to store strings, simply cast the char * to a void * (e.g., to store
+ * the string referred to by the declaration char *string, you would
+ * call insertData(someHashTable, (void *) string, (void *) string).
+ * Because we only need a set data structure for this spell checker,
+ * we can use the string as both the key and data.
  */
 extern void insertData(HashTable *table, void *key, void *data);
 
 /*
- * This takes a key and returns the corresponding data to that key,
- * or NULL if the key was not found.
+ * This returns the corresponding data for a given key.
+ * It returns NULL if the key is not found. 
  */
 extern void *findData(HashTable *table, void *key);
 
