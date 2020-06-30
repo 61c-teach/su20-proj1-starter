@@ -92,7 +92,7 @@ int stringEquals(void *s1, void *s2) {
  * can initially assume that no word is longer than 60 characters.  However,
  * for the final 20% of your grade, you cannot assumed that words have a bounded
  * length.  You CANNOT assume that the specified file exists.  If the file does
- * NOT exist, you should print some message to standard error and call exit(0)
+ * NOT exist, you should print some message to standard error and call exit(1)
  * to cleanly exit the program.
  *
  * Since the format is one word at a time, with new lines in between,
